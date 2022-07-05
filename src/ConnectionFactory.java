@@ -6,7 +6,7 @@ public class ConnectionFactory {
 
 	public Connection recuperarConexao() throws SQLException {
 		return DriverManager
-				.getConnection("jdbc:mysql://172.17.0.2/loja_virtual?useTimezone=true&serverTimezone=UTC", "root", "root");
+				.getConnection("jdbc:mysql://localhost/loja_virtual?useTimezone=true&serverTimezone=UTC", "root", "root");
 	}
 	
 }
