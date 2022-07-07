@@ -3,6 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import br.com.alura.jdbc.dao.ProdutoDAO;
 import br.com.alura.jdbc.modelo.Produto;
 
 public class TestaInsercaoComProduto {
@@ -12,31 +13,8 @@ public class TestaInsercaoComProduto {
 		Produto prod = new Produto("Cômoda", "Cômoda Vertical");
 
 		try (Connection conn = new ConnectionFactory().recuperarConexao()) {
-			String sql = "INSERT INTO produto (NOME, DESCRICAO) VALUES (?, ?)";
-			
-			try (PreparedStatement stm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-				
-				stm.setString(1, prod.getNome());
-				stm.setString(2, prod.getDescricao());
-				
-				stm.execute();
-				
-				try(ResultSet rst = stm.getGeneratedKeys()) {
-					while (rst.next()) {
-						int id = rst.getInt(1);
-						prod.setId(id);
-						System.out.println(prod);
-					};
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
-					e.printStackTrace();
-				}
-				
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-				e.printStackTrace();
-			}
-			
+			ProdutoDAO pp = new ProdutoDAO(conn);
+			pp.salvar(prod);
 			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
