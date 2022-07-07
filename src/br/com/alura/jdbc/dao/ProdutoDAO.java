@@ -3,6 +3,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.alura.jdbc.modelo.Produto;
 
@@ -39,5 +41,29 @@ public class ProdutoDAO {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 		}
+	}
+	
+	public List<Produto> listar() {
+		List<Produto> produtos = new ArrayList<Produto>();
+		
+		String sql = "SELECT * FROM produto";
+		
+		try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+			pstm.execute();
+			
+			try (ResultSet rst = pstm.getResultSet()) {
+				while(rst.next()) {
+					Produto prod = new Produto(rst.getInt(1), rst.getString(2), rst.getString(3));
+					produtos.add(prod);
+				}
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return produtos;
 	}
 }

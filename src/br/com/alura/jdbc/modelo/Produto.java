@@ -11,6 +11,12 @@ public class Produto {
 		this.descricao = descricao;
 	}
 
+	public Produto(int id, String nome, String descricao) {
+		this.nome = nome;
+		this.descricao = descricao;
+		this.setId(id);
+	}
+
 	public String getDescricao() {
 		// TODO Auto-generated method stub
 		return this.descricao;
