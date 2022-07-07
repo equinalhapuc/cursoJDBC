@@ -12,7 +12,7 @@ public class TestaInsercaoComProduto {
 		Produto prod = new Produto("Cômoda", "Cômoda Vertical");
 
 		try (Connection conn = new ConnectionFactory().recuperarConexao()) {
-			String sql = "INSERT INTO PRODUTO (NOME, DESCRICAO) VALUES (?, ?)";
+			String sql = "INSERT INTO produto (NOME, DESCRICAO) VALUES (?, ?)";
 			
 			try (PreparedStatement stm = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 				
@@ -22,18 +22,25 @@ public class TestaInsercaoComProduto {
 				stm.execute();
 				
 				try(ResultSet rst = stm.getGeneratedKeys()) {
-					
+					while (rst.next()) {
+						int id = rst.getInt(1);
+						prod.setId(id);
+						System.out.println(prod);
+					};
 				} catch (Exception e) {
-					// TODO: handle exception
+					System.out.println(e.getMessage());
+					e.printStackTrace();
 				}
 				
 			} catch (Exception e) {
-				// TODO: handle exception
+				System.out.println(e.getMessage());
+				e.printStackTrace();
 			}
 			
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		
 	}
