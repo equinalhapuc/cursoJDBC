@@ -6,8 +6,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/074135960612/Downloads/mysql-connector-java-8.0.17.jar"/>
-	<classpathentry kind="lib" path="C:/Users/074135960612/Desktop/c3p0-0.9.5.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/074135960612/Desktop/mchange-commons-java-0.2.16.jar"/>
+	<classpathentry kind="lib" path="/home/quinalha/Downloads/c3p0/c3p0-0.9.5.4.jar"/>
+	<classpathentry kind="lib" path="/home/quinalha/Downloads/c3p0/mchange-commons-java-0.2.16.jar"/>
+	<classpathentry kind="lib" path="/home/quinalha/Downloads/mysql-connector-java-8.0.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
