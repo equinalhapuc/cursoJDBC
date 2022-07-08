@@ -16,7 +16,7 @@ public class TestaListagemDeCategorias {
 		
 		try {
 			CategoriaDAO categoriaDAO = new CategoriaDAO(conn);
-			listaDeCategorias = categoriaDAO.listar();
+			listaDeCategorias = categoriaDAO.listarComProdutos();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

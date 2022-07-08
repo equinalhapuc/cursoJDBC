@@ -52,8 +52,7 @@ public class CategoriaDAO {
 			
 			try (ResultSet rst = pstm.getResultSet()) {
 				while (rst.next()) {
-					
-					if(ultima == null || ultima.getNome() == rst.getString(2)) {
+					if(ultima == null || ultima.getNome() != rst.getString(2)) {
 						Categoria categoria = new Categoria(rst.getInt(1), rst.getString(2));
 						categorias.add(categoria);
 						ultima = categoria;

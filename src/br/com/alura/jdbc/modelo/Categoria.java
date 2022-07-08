@@ -1,11 +1,12 @@
 package br.com.alura.jdbc.modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Categoria {
 	private int id;
 	private String nome;
-	private List<Produto> produtos;
+	private List<Produto> produtos = new ArrayList<Produto>();
 
 	public Categoria(String nome) {
 		this.nome = nome;
@@ -39,7 +40,7 @@ public class Categoria {
 	}
 
 	public List<Produto> getProdutos() {
-		return produtos;
+		return this.produtos;
 	}
 
 }
